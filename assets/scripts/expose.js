@@ -30,6 +30,7 @@ function init() {
   });
 }
 
+// the functionality for slelecting a horn in the drop down menu
 function changeHorn() {
   // gets access to the image and audio elements of the html
   let hornImage = document.querySelector('img');
@@ -53,6 +54,7 @@ function changeHorn() {
   }
 }
 
+// the functionality for using the slider to change the volume level
 function changeVolume() {
   // gets the volume level and the volume image
   const volumeLevel = document.getElementById('volume').value;
@@ -79,6 +81,7 @@ function changeVolume() {
   }
 }
 
+// the functionality for using the button to play the sound
 function playSound() {
   // gets access to the audio element
   let hornAudio = document.querySelector('audio');
