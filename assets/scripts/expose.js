@@ -21,10 +21,10 @@ function init() {
   playButton.addEventListener('click', playSound);
   playButton.addEventListener('click', function() {
     // gets the selected horn
-    const horn = document.getElementById('horn-select').value;
+    const horn = document.getElementById('horn-select');
 
     // if the party horn is selected, then the confetti will be displayed
-    if (horn == 'party-horn') {
+    if (horn.value == 'party-horn') {
       jsConfetti.addConfetti();
     }
   });
