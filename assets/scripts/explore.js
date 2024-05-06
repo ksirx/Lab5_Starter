@@ -2,7 +2,6 @@
 
 window.addEventListener('DOMContentLoaded', init);
 
-
 function init() {
   // TODO
   
@@ -18,26 +17,40 @@ function init() {
   // dropbox
   const talkSelection = document.querySelector("select");
 
-   // adds all available voices to the dropbox
-   populateVoiceList();
-   if (
+  // adds all available voices to the dropbox taken from https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis
+  populateVoiceList();
+  if (
     typeof speechSynthesis !== "undefined" &&
     speechSynthesis.onvoiceschanged !== undefined
-   ) {
+  ) {
     speechSynthesis.onvoiceschanged = populateVoiceList;
-   }
+  }
 
-   // speaks when the button is clicked
-   
+  // speaks when the button is clicked
+  talkButton.addEventListener('click', function() {
+    // gets the text from the text area
+    const utterThis = new SpeechSynthesisUtterance(talkTextBox.value);
+    // gets the selected voice and sets the utterace to it
+    const selectedOption = talkSelection.value;
 
-   // if speaking then change the image to the speaking image
- }
+    let voices = synth.getVoices();
+    for (let i = 0; i < voices.length; i++) {
+      if(voices[i].name === selectedOption) {
+        utterThis.voice = voices[i];
+      }
+    }
+    synth.speak(utterThis);
+  });
+
+  // if speaking then change the image to the speaking image
+}
  
- function populateVoiceList() {
+// function taken from https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis
+function populateVoiceList() {
   if (typeof speechSynthesis === "undefined") {
     return;
   }
- 
+
   const voices = speechSynthesis.getVoices();
   const talkSelection = document.querySelector("select");
  
