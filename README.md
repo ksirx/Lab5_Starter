@@ -8,6 +8,8 @@ Xavier Navarro
 
 Expose: https://ksirx.github.io/Lab5_Starter/expose.html
 
-- AI was used to ask general questions about event listeners and help get the confetti to work within init function
-
 Explore: https://ksirx.github.io/Lab5_Starter/explore.html
+
+I used AI in both sections to debug and ask questions about event listeners.
+
+## 
