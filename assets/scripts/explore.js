@@ -30,6 +30,17 @@ function init() {
   talkButton.addEventListener('click', function() {
     // gets the text from the text area
     const utterThis = new SpeechSynthesisUtterance(talkTextBox.value);
+
+    // watch for when start speaking to change image
+    utterThis.addEventListener('start', function() {
+      talkImage.src = "assets/images/smiling-open.png";
+    });
+
+    // watch for when end speaking to change image
+    utterThis.addEventListener('end', function() {
+      talkImage.src = "assets/images/smiling.png";
+    });
+
     // gets the selected voice and sets the utterace to it
     const selectedOption = talkSelection.value;
 
@@ -39,10 +50,10 @@ function init() {
         utterThis.voice = voices[i];
       }
     }
+    
+    // speaks whats in the box
     synth.speak(utterThis);
   });
-
-  // if speaking then change the image to the speaking image
 }
  
 // function taken from https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis
